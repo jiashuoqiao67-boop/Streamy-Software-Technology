@@ -13,8 +13,6 @@ The diagram below maps out how our development environment connects local code
 authoring to remote version tracking, using a **Diagrams‑as‑Code** design pipeline.
 ## Streamy Application Engineering Development Lifecycle
 To guarantee systematic software tracking across the implementation lifespan of **Streamy**, our individual developer pipeline follows the structured iterative gate review framework illustrated below.
-## Streamy Application Engineering Development Lifecycle
-To guarantee systematic software tracking across the implementation lifespan of **Streamy**, our individual developer pipeline follows the structured iterative gate review framework illustrated below.
 
 ```mermaid
 title: Streamy Iterative SDLC Blueprint
