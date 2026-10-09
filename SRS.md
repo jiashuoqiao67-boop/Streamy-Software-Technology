@@ -19,10 +19,14 @@ The application architecture is constrained by the following systemic performanc
 
 ### 3. Functional System Boundary Diagram
 The diagram below plots the structural use‑case interactions crossing the Streamy application boundaries:
+### 3. Functional System Boundary Diagram
 
+The diagram below plots the structural use-case interactions crossing the Streamy application boundaries:
+
+```mermaid
 flowchart LR
     title["Streamy System Boundary & Functional Use Cases"]
-    ViewerActor(("External Actor:<br>Platform Viewer"))
+    ViewerActor[External Actor:<br>Platform Viewer]
 
     subgraph ExternalApp [Client Application Interface]
         UI[Web Dashboard UI]
@@ -38,3 +42,4 @@ flowchart LR
     UI -- Ingests Genre Metadata --> FR1
     UI -- Triggers Playback Route --> FR2
     UI -- Submits Rating Payload --> FR3
+
