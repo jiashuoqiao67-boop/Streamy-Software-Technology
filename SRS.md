@@ -22,8 +22,7 @@ The diagram below plots the structural use-case interactions crossing the Stream
 
 ```mermaid
 flowchart LR
-    title["Streamy System Boundary & Functional Use Cases"]
-    ViewerActor[External Actor:<br>Platform Viewer]
+    ViewerActor((External Actor:<br>Platform Viewer))
 
     subgraph ExternalApp [Client Application Interface]
         UI[Web Dashboard UI]
@@ -43,5 +42,4 @@ flowchart LR
     UI -- Submits Rating Payload --> FR3
     UI -- Collect Watch Behaviour --> FR4
     FR2 -- Persist Media Entity State --> FR5
-
 
