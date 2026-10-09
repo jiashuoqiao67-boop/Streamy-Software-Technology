@@ -18,7 +18,9 @@ The application architecture is constrained by the following systemic performanc
 * **NFR‑3 (Data Integrity):** The underlying database must enforce cascading deletion operations across nested entity constraints.
 
 ### 3. Functional System Boundary Diagram
-The diagram below plots the structural use‑case interactions crossing the Streamy application boundaries:
+The diagram below plots the structural use-case interactions crossing the Streamy application boundaries:
+
+```mermaid
 flowchart LR
     title["Streamy System Boundary & Functional Use Cases"]
     ViewerActor[External Actor:<br>Platform Viewer]
@@ -41,4 +43,5 @@ flowchart LR
     UI -- Submits Rating Payload --> FR3
     UI -- Collect Watch Behaviour --> FR4
     FR2 -- Persist Media Entity State --> FR5
+
 
