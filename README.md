@@ -2,6 +2,9 @@
 To guarantee systematic software tracking across the implementation lifespan of **Streamy**, our individual developer pipeline follows the structured iterative gate review framework illustrated below.
 
 ```mermaid
+---
+title: Streamy Iterative SDLC Blueprint
+---
 flowchart TD
     A[Inception Abstract Created] --> B[SRS Requirements Compiling]
     subgraph SpecPhase [1. Requirements Specification Block]
