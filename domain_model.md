@@ -18,8 +18,11 @@ classDiagram
     class Film {
         +int lengthMinutes
     }
-    class Series {
+    class TVShow {
         +int seasonsCount
+    }
+    class Season {
+        +int seasonNumber
     }
     class Episode {
         +int episodeNo
@@ -37,9 +40,10 @@ classDiagram
         +Date watchedAt
     }
 
-    Title <|-- Film
-    Title <|-- Series
-    Series o-- Episode
-    User *-- Subscription
-    User -- WatchHistory
-    WatchHistory -- Title
+    Film --|> Title : extends
+    TVShow --|> Title : extends
+    TVShow "1" *-- "0..*" Season : owns
+    Season "1" *-- "0..*" Episode : contains
+    User "1" *-- "1" Subscription : has
+    User "1" -- "0..*" WatchHistory : records
+    WatchHistory "0..*" -- "1" Title : references
