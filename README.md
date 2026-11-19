@@ -73,6 +73,20 @@ flowchart LR
     Streamy --> SearchSvc["Search Service<br/>[External System]"]
 ```
 
+## Desktop GUI (Lab 11 Challenge Extension)
+
+Beyond the backend engine, a Tkinter desktop front-end (`streamy_gui.py`) extends the platform with:
+
+- A searchable catalog matching title names and cast members by keyword.
+- A detail panel showing year, reviews, average rating, cast and subtype-specific details.
+- Playback actions that exercise the valid / expired token authorization paths.
+
+Run it from the repository root:
+
+```
+python streamy_gui.py
+```
+
 ## Fallback for Platforms Without Native Mermaid Support
 
 On platforms that do not render Mermaid natively (e.g. legacy wikis or standard static sites), keep an exported static image and store the editable diagram source in an HTML comment directly below it, so the source is not lost when the architecture changes later:
