@@ -39,6 +39,19 @@ class Title:
         """Associates an independent actor to this title (Aggregation)."""
         self.cast_actors.append(actor)
 
+    def average_rating(self) -> float:
+        """Extension feature: mean star rating across all attached reviews (0.0 when none)."""
+        if not self.reviews:
+            return 0.0
+        return round(sum(r.rating_stars for r in self.reviews) / len(self.reviews), 2)
+
+    def detail_lines(self) -> list:
+        """Extension feature: human-readable detail lines used by the GUI catalog."""
+        lines = [f"Year: {self.release_year}", f"Reviews: {len(self.reviews)}",
+                 f"Average rating: {self.average_rating()} / 5",
+                 f"Cast: {', '.join(a.full_name for a in self.cast_actors) or 'Unassigned'}"]
+        return lines
+
 
 class Film(Title):
     """Specialized media child type mapping feature films (Generalization)."""
@@ -125,6 +138,46 @@ class Genre:
         print(f"\n[Taxonomy Index] Titles registered under Genre Category: {self.genre_name}")
         for title in self.catalog_titles:
             print(f" - {title.name} ({title.release_year})")
+
+
+class StreamyPlatform:
+    """Extension feature: top-level catalog facade that aggregates titles, actors and genres,
+    and exposes keyword search used by the desktop GUI."""
+
+    def __init__(self):
+        self.titles: list = []
+        self.actors: list = []
+        self.genres: list = []
+
+    def add_title(self, title: Title):
+        self.titles.append(title)
+
+    def register_actor(self, actor: Actor):
+        self.actors.append(actor)
+
+    def add_genre(self, genre: Genre):
+        self.genres.append(genre)
+
+    def search_titles(self, keyword: str) -> list:
+        """Case-insensitive keyword match against title name and cast member names."""
+        kw = keyword.strip().lower()
+        if not kw:
+            return list(self.titles)
+        return [
+            t for t in self.titles
+            if kw in t.name.lower()
+            or any(kw in a.full_name.lower() for a in t.cast_actors)
+        ]
+
+    def title_summary(self, title: Title) -> str:
+        """One-line catalog entry for a title, including its subtype."""
+        subtype = type(title).__name__
+        extra = ""
+        if isinstance(title, TVShow):
+            extra = f" | Network: {title.network}"
+        elif isinstance(title, Film):
+            extra = f" | Length: {title.length_minutes} min"
+        return f"{title.name} ({title.release_year}) [{subtype}]{extra} | Avg {title.average_rating()}/5"
 
 
 # =============================================================================
