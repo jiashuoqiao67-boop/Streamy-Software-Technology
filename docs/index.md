@@ -20,5 +20,13 @@ sequenceDiagram
 
 <script type="module">
   import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+  mermaid.initialize({ startOnLoad: false, theme: 'neutral' });
+  document.querySelectorAll('code.language-mermaid, code[data-lang="mermaid"]').forEach((code) => {
+    const pre = code.closest('pre');
+    const box = document.createElement('div');
+    box.className = 'mermaid';
+    box.textContent = code.textContent;
+    if (pre) { pre.replaceWith(box); } else { code.replaceWith(box); }
+  });
+  mermaid.run({ querySelector: '.mermaid' });
 </script>
