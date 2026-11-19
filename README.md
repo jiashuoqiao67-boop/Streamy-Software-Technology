@@ -79,9 +79,6 @@ On platforms that do not render Mermaid natively (e.g. legacy wikis or standard 
 
 ![Architecture Diagram](./images/architecture.png)
 <!--
-Editable Diagram Source:
-mermaid
-flowchart TD
-    A[Service A] --> B[Service B]
+Editable Diagram Source: a flowchart TD with Service A connected to Service B.
+Keep the raw Mermaid source here so it is not lost when the architecture changes.
 -->
-
